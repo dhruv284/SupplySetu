@@ -1,64 +1,63 @@
 // src/components/VendorDashboard.jsx
-
+import Navbar from './Navbar';
 import React from "react";
 import { Link } from "react-router-dom";
 import {
   FaClipboardList,
-  FaPlusCircle,
   FaUsers,
   FaMapMarkerAlt,
   FaRedoAlt,
   FaChartBar,
+  FaStore,
 } from "react-icons/fa";
 
 const VendorDashboard = () => {
   return (
+    
     <div className="min-h-screen bg-gray-100 p-6">
+      <Navbar />
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold mb-6 text-gray-800">Vendor Dashboard</h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
           <DashboardCard
-            to="/vendor/orders"
-            icon={<FaClipboardList className="text-blue-600 text-2xl mr-2" />}
-            title="View Orders"
-            desc="See all orders placed by buyers and update delivery status."
+            to="/vendor/catalog"
+            icon={<FaStore className="text-green-600 text-2xl mr-2" />}
+            title="Browse Products"
+            desc="Browse products from suppliers and place orders."
           />
 
           <DashboardCard
-            to="/vendor/add-products"
-            icon={<FaPlusCircle className="text-green-600 text-2xl mr-2" />}
-            title="Add Products"
-            desc="Upload or update your product catalog with pricing."
+            to="/vendor/orders"
+            icon={<FaClipboardList className="text-blue-600 text-2xl mr-2" />}
+            title="My Orders"
+            desc="Track all your placed orders and delivery status."
           />
 
           <DashboardCard
             to="/vendor/groups"
             icon={<FaUsers className="text-purple-600 text-2xl mr-2" />}
             title="Vendor Groups"
-            desc="Join and manage local vendor groups for bulk ordering."
+            desc="Join and manage vendor communities for better pricing."
           />
 
           <DashboardCard
             to="/vendor/delivery"
             icon={<FaMapMarkerAlt className="text-pink-600 text-2xl mr-2" />}
             title="Pickup / Delivery"
-            desc="Coordinate pickup points or enable last-mile delivery."
+            desc="Manage pickup locations and delivery schedules."
           />
 
           <DashboardCard
             to="/vendor/recurring-orders"
             icon={<FaRedoAlt className="text-yellow-600 text-2xl mr-2" />}
             title="Recurring Orders"
-            desc="Enable and manage weekly recurring orders."
+            desc="Place weekly or monthly recurring orders."
           />
 
-          <DashboardCard
-            to="/vendor/analytics"
-            icon={<FaChartBar className="text-indigo-600 text-2xl mr-2" />}
-            title="Track Analytics"
-            desc="Monitor delivery stats, payments, and order trends."
-          />
+          
+
         </div>
       </div>
     </div>

@@ -13,7 +13,12 @@ import SupplierDashboard from "./components/SupplierDashboard";
 import ViewOrders from "./components/ViewOrders";
 import AddProducts from "./components/AddProducts";
 import VendorGroups from "./components/VendorGroups";
-
+import TrackAnalysis from "./components/TrackAnalysis";
+import Vendors from "./components/Vendors";
+import BrowseProducts from "./components/BrowseProducts";
+import VendorProductCatalogue from "./components/VendorProductCatalogue";
+import AddCategory from "./components/AddCategory";
+import AddProduct from "./components/AddProducts";
 function App() {
   return (
     <Routes>
@@ -27,9 +32,14 @@ function App() {
       <Route path="/supplier/dashboard" element={<SupplierDashboard />} />
       <Route path="/vendor/orders" element={<ViewOrders />} />
       <Route path="/vendor/groups" element={<VendorGroups />} />
-
+      <Route path="/vendors" element={<Vendors/>}/>
       <Route path="/vendor/add-products" element={<AddProducts />} />
-     
+      <Route path="/vendor/catalog" element={<BrowseProducts />} />
+      <Route path="/vendor/catalogue/:categoryId" element={<VendorProductCatalogue />} />
+      <Route path="/supplier/add-category" element={<AddCategory />} />
+      
+      <Route path="/supplier/add-product" element={<AddProduct />} />
+      <Route path="/vendor/analytics" element={<TrackAnalysis/>}/>
     </Routes>
   );
 }

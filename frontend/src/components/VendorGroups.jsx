@@ -10,7 +10,7 @@ const VendorGroups = () => {
   const dropdownRef = useRef(null);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:5000/api/suppliers')
+    axios.get('http://127.0.0.1:5000/api/vendors/suppliers')
     
       .then(res =>{
         console.log("Fetched suppliers:", res.data);
@@ -51,7 +51,7 @@ const VendorGroups = () => {
         description,
         supplier_ids: selectedSuppliers
       };
-      const res = await axios.post('http://127.0.0.1:5000/api/add-vendor-group', payload);
+      const res = await axios.post('http://127.0.0.1:5000/api/vendor/add-vendor-group', payload);
       alert(res.data.message);
       setName('');
       setDescription('');

@@ -17,29 +17,34 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+  
+    // ✅ Always clear storage BEFORE sending or setting new session info
+    localStorage.clear();
+  
     try {
       const res = await fetch("http://127.0.0.1:5000/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify({
           role,
           email: formData.email,
           password: formData.password
         })
       });
-      
-
+  
       const data = await res.json();
+  
       if (res.ok) {
-        alert("Login successful");
-        localStorage.setItem("user_id", data.user_id); // Assuming you return this from Flask
+        // ✅ Set user session info
+        localStorage.setItem("user_id", data.user_id); // Ensure Flask returns correct `user_id`
         localStorage.setItem("role", role);
-
+        alert("Login successful");
+  
         // 🔁 Role-based redirection
         if (role === "admin") navigate("/admin/dashboard");
         else if (role === "vendor") navigate("/vendor/dashboard");
         else if (role === "supplier") navigate("/supplier/dashboard");
-
       } else {
         alert(data.message || "Login failed");
       }
@@ -48,6 +53,7 @@ const Login = () => {
       alert("Server error");
     }
   };
+  
 
   return (
     <div className="min-h-screen w-full bg-[#f9fbfa] font-sans flex flex-col">
